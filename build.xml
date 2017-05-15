@@ -1,7 +1,7 @@
 <project name="Practicum Dasy" default="help">
 
 <target name="war">
-<echo>The war has ended!</echo>
+<echo>The war has anted!</echo>
   <subant target="all">
         <fileset dir="Week1/" includes="*/build.xml" />
 </subant>
