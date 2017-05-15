@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 public class AantalHits extends HttpServlet {
 	private int aantal = 0;
 	private String full_path = System.getProperty("catalina.base");
-	
-	
+
+
 	public void init() throws ServletException {
 		super.init();
 		log("servlet init");
@@ -36,28 +36,28 @@ public class AantalHits extends HttpServlet {
 			aantal = Integer.parseInt(content);
 		} catch (Exception e) {
 		}
-		
+
 	}
-	
+
 	public void writeAantalHints(){
 		log("WRITING AANTAL_HINTS TO FILE.");
-		
+
 		log("Full path:"+full_path);
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(			  
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 	              new FileOutputStream(full_path + "\\aantal_hints.txt"), "utf-8"))) {
 		   writer.write(String.valueOf(aantal));
-		   log("Aantal hints: " + String.valueOf(aantal));
+		   log(", Aantal hints: " + String.valueOf(aantal));
 		}
 		 catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void destroy() {
 		log("servlet destroy");
-		
+
 		super.destroy();
 	}
 
@@ -75,7 +75,7 @@ public class AantalHits extends HttpServlet {
 			writeAantalHints();
 			s2 = "           Test: " + aantal + "\n";
 		}
-		String s3 = "         </h1>\n" + "      HALLO MATTHIJS!!!</center>\n" + "   </body>\n" + "</html>\n";
+		String s3 = "         </h1>\n" + "   koen is niet lief  HALLO MATTHIJS!!!</center>\n" + "   </body>\n" + "</html>\n";
 		out.print(s1 + s2 + s3);
 	}
 }
