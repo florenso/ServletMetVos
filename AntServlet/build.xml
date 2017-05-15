@@ -1,13 +1,13 @@
 <project name="Ant Servlet" default="help" basedir=".">
   <!-- Define the properties used by the build -->
   <property name="app.name"      value="AntServlet"/>
-  <property name="webapps.home"   value="C:\Users\koen\Documents\DASY\apache-tomcat-7.0.77\webapps"/>
+  <property name="webapps.home"   value="C:\tomcat\webapps"/>
   <property name="work.home"    value="${basedir}/work"/>
   <property name="dist.home"     value="${basedir}/dist"/>
   <property name="src.home"      value="${basedir}/src"/>
   <property name="web.home"      value="${basedir}/web"/>
   <property name="lib"      value="${basedir}/../lib"/>
-  
+
   <target name="help">
     <echo>You can use the following targets:</echo>
     <echo> </echo>
@@ -20,7 +20,7 @@
     <echo>For example, to clean, compile, and package all at once, run:</echo>
     <echo>prompt> ant all </echo>
   </target>
-  
+
     <path id="runtime.path">
 	<pathelement location="${lib}/servlet-api.jar"/>
 	</path>
@@ -68,4 +68,4 @@
 			 <delete dir="${dist.home}"/>
   </target>
 
-</project> 
+</project>
