@@ -1,0 +1,27 @@
+<project name="Practicum Dasy" default="help">
+  <subant target="all">
+        <fileset dir="Week1/" includes="*/build.xml" />
+</subant>
+</project>
+
+<!-- 
+<project name="Practicum Dasy" default="help">
+
+<target name="Week1">
+
+
+  <ant antfile="Week1/Opdracht2/build.xml" target="all" />
+   <ant antfile="Week1/Opdracht3/build.xml" target="build" /> 
+	<ant antfile="Week1/Opdracht4/build.xml" target="build" />
+	<ant antfile="Week1/Opdracht5/build.xml" target="build" />
+</target>
+
+<target name="Week2">
+
+ <ant antfile="Week2/Opdracht1/build.xml" target="build" />
+    <ant antfile="Week2/Opdracht2/build.xml" target="build" />
+    <ant antfile="Week2/Opdracht3/build.xml" target="build" />
+	<ant antfile="Week2/Opdracht4/build.xml" target="build" />
+
+</target>
+</project>-->

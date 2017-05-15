@@ -1,7 +1,7 @@
 <project name="Ant Servlet" default="help" basedir=".">
   <!-- Define the properties used by the build -->
   <property name="app.name"      value="Opdracht2"/>
-  <property name="webapps.home"   value="C:\Users\koen\Documents\DASY\apache-tomcat-7.0.77\webapps"/>
+  <property name="webapps.home"   value="C:\tomcat\webapps"/>
   <property name="work.home"    value="${basedir}/work"/>
   <property name="dist.home"     value="${basedir}/dist"/>
   <property name="src.home"      value="${basedir}/src"/>
