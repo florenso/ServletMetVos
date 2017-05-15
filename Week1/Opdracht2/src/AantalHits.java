@@ -1,7 +1,3 @@
-package servlets;
-
-//AantalBezoekers.java
-
 import java.io.PrintWriter;
 
 import java.io.Writer;
@@ -79,7 +75,7 @@ public class AantalHits extends HttpServlet {
 			writeAantalHints();
 			s2 = "           Test: " + aantal + "\n";
 		}
-		String s3 = "         </h1>\n" + "      </center>\n" + "   </body>\n" + "</html>\n";
+		String s3 = "         </h1>\n" + "      HALLO MATTHIJS!!!</center>\n" + "   </body>\n" + "</html>\n";
 		out.print(s1 + s2 + s3);
 	}
 }
