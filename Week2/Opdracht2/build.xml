@@ -8,7 +8,8 @@
   <property name="src.home"      value="${basedir}/src"/>
   <property name="web.home"      value="${basedir}/web"/>
   <property name="lib"      value="${basedir}/../../lib"/>
-   <import file="C:/tomcat/bin/catalina-tasks.xml"/>
+  
+  <import file="C:/tomcat/bin/catalina-tasks.xml"/>
 	 
   <target name="help">
     <echo>You can use the following targets:</echo>
@@ -38,7 +39,7 @@
     <jasper
              validateXml="false"
              uriroot="${web.home}"
-             webXmlFragment="${web.home}/WEB-INF/web.xml"
+             webXmlFragment="${web.home}/WEB-INF/generated_web.xml"
 			 addWebXmlMappings="true"
              outputDir="${src.home}" />
 
