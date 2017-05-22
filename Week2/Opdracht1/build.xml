@@ -1,32 +1,30 @@
-<project name="Week2Opdracht1" default="all" basedir=".">
-
-   <import file="C:/tomcat/bin/catalina-tasks.xml"/>
-
-   <target name="jspc">
-
-    <jasper
-             validateXml="false"
-             uriroot="C:\tomcat\webapps"
-             webXmlFragment="${webapp.path}/WEB-INF/generated_web.xml"
-             outputDir="${webapp.path}/WEB-INF/src" />
-
+<project name="W2Opdracht1" default="help" basedir=".">
+  <!-- Define the properties used by the build -->
+  <property name="app.name"      value="W2Opdracht1"/>
+  <property name="webapps.home"   value="C:\tomcat\webapps"/>
+  <property name="tomcat.home"   value="C:/tomcat/"/>
+  <property name="work.home"    value="${basedir}/work"/>
+  <property name="dist.home"     value="${basedir}/dist"/>
+  <property name="src.home"      value="${basedir}/src"/>
+  <property name="web.home"      value="${basedir}/web"/>
+  <property name="lib"      value="${basedir}/../../lib"/>
+  
+  <import file="C:/tomcat/bin/catalina-tasks.xml"/>
+	 
+  <target name="help">
+    <echo>You can use the following targets:</echo>
+    <echo> </echo>
+    <echo>  help    : (default) Prints this message </echo>
+    <echo>  all     : Cleans, compiles, and packages application</echo>
+    <echo>  clean   : Deletes work directories</echo>
+    <echo>  compile : Compiles servlets into class files</echo>
+    <echo>  dist    : Packages artifacts into a deployable WAR</echo>
+    <echo></echo>
+    <echo>For example, to clean, compile, and package all at once, run:</echo>
+    <echo>prompt> ant all </echo>
   </target>
-
-  <target name="compile">
-
-    <mkdir dir="${webapp.path}/WEB-INF/classes"/>
-    <mkdir dir="${webapp.path}/WEB-INF/lib"/>
-
-    <javac destdir="${webapp.path}/WEB-INF/classes"
-           optimize="off"
-           debug="on" failonerror="false"
-           srcdir="${webapp.path}/WEB-INF/src"
-           excludes="**/*.smap">
-      <classpath>
-        <pathelement location="${webapp.path}/WEB-INF/classes"/>
-        <fileset dir="${webapp.path}/WEB-INF/lib">
-          <include name="*.jar"/>
-        </fileset>
+  
+    <path id="runtime.path">
         <pathelement location="${tomcat.home}/lib"/>
         <fileset dir="${tomcat.home}/lib">
           <include name="*.jar"/>
@@ -34,15 +32,61 @@
         <fileset dir="${tomcat.home}/bin">
           <include name="*.jar"/>
         </fileset>
-      </classpath>
-      <include name="**" />
-      <exclude name="tags/**" />
+	</path>
+	
+   <target name="jspc">
+
+    <jasper
+             validateXml="false"
+             uriroot="${web.home}"
+             webXmlFragment="${web.home}/WEB-INF/generated_web.xml"
+			 addWebXmlMappings="true"
+             outputDir="${src.home}" />
+
+  </target>
+
+
+  <target name="all" depends="clean,jspc,compile,dist"
+          description="Clean work dirs, then compile and create a WAR"/>
+
+  <target name="clean"
+          description="Delete old work and dist directories">
+    <delete dir="${work.home}"/>
+    <delete dir="${dist.home}"/>
+  </target>
+
+  <target name="prepare" depends="clean"
+          description="Create working dirs and copy static files to work dir">
+    <mkdir  dir="${dist.home}"/>
+    <mkdir  dir="${work.home}/WEB-INF/classes"/>
+    <!-- Copy static HTML and JSP files to work dir -->
+    <copy todir="${work.home}">
+      <fileset dir="${web.home}"/>
+    </copy>
+  </target>
+
+  <target name="compile" depends="prepare"
+          description="Compile Java sources and copy to WEB-INF/classes dir">
+    <javac srcdir="${src.home}"
+          destdir="${work.home}/WEB-INF/classes">
+       <classpath refid="runtime.path"/>
     </javac>
+    <copy  todir="${work.home}/WEB-INF/classes">
+      <fileset dir="${src.home}" excludes="**/*.java"/>
+    </copy>
 
   </target>
 
-  <target name="all" depends="jspc,compile">
+
+  <target name="dist" depends="compile"
+          description="Create WAR file for binary distribution">
+    <jar jarfile="${dist.home}/${app.name}.war"
+         basedir="${work.home}"/>
+		 <delete dir="${work.home}"/>
+		     <copy todir="${webapps.home}">
+			  <fileset dir="${dist.home}"/>
+			</copy>
+			 <delete dir="${dist.home}"/>
   </target>
 
-
-</project>
+</project> 

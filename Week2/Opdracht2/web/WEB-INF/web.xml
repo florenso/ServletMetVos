@@ -4,18 +4,18 @@
    <!-- JSPC servlet mappings start -->
 
     <servlet>
-        <servlet-name>org.apache.jsp.MijnJsp_jsp</servlet-name>
-        <servlet-class>org.apache.jsp.MijnJsp_jsp</servlet-class>
+        <servlet-name>org.apache.jsp.Week2Opdracht2_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.Week2Opdracht2_jsp</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>org.apache.jsp.MijnJsp_jsp</servlet-name>
-        <url-pattern>/MijnJsp.jsp</url-pattern>
+        <servlet-name>org.apache.jsp.Week2Opdracht2_jsp</servlet-name>
+        <url-pattern>/Week2Opdracht2.jsp</url-pattern>
     </servlet-mapping>
 
 <!-- JSPC servlet mappings end -->
 
 <welcome-file-list>
-    <welcome-file>MijnJsp.jsp</welcome-file>
+    <welcome-file>Week2Opdracht2.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
