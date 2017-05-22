@@ -44,11 +44,5 @@
   <target name="all" depends="jspc,compile">
   </target>
 
-  <target name="cleanup">
-    <delete>
-        <fileset dir="${webapp.path}/WEB-INF/src"/>
-        <fileset dir="${webapp.path}/WEB-INF/classes/org/apache/jsp"/>
-    </delete>
-  </target>
 
 </project>
