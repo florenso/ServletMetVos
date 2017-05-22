@@ -36,12 +36,12 @@ public class CalculateServlet extends HttpServlet
 	  if(cb.xisValid() && cb.yisValid())
 	  {
 		  request.setAttribute("calc", cb);
-		  url = "calculate1.jsp";
+		  url = "calculate.jsp";
 	  }
 	  else {
 		  System.out.println("X & Y ARE INVALID");
 		  request.setAttribute("calc", cb);
-		  url = "formdemo.html";
+		  url = "formdemo.jsp";
 	  }
 		  
  

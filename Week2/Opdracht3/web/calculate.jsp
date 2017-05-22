@@ -33,6 +33,6 @@
 	${calc["xvalue"]} + ${calc["yvalue"]} = ${calc["sum"]}
 	<br>
 	<hr>
-	<a href="formdemo.html"> terug </a>
+	<a href="formdemo.jsp"> terug </a>
 </body>
 </html>

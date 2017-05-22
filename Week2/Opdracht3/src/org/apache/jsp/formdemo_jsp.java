@@ -12,14 +12,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class calculate_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class formdemo_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
  
 	public void jspInit()
 	{
-	    log("doTelop init");
+		System.out.println("FORMDEMO.JSP IS LOADED");
 	}   
+		
 
   private static final javax.servlet.jsp.JspFactory _jspxFactory =
           javax.servlet.jsp.JspFactory.getDefaultFactory();
@@ -94,24 +95,57 @@ public final class calculate_jsp extends org.apache.jasper.runtime.HttpJspBase
       }
       out.write("\r\n\r\n\r\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("calculator"), request);
+      out.write('\r');
+      out.write('\n');
+      out.write(org.apache.jasper.runtime.JspRuntimeLibrary.toString((((beans.CalculatorBean)_jspx_page_context.findAttribute("calculator")).getXstatus())));
+      out.write(' ');
+      out.write('\r');
+      out.write('\n');
+      out.write(org.apache.jasper.runtime.JspRuntimeLibrary.toString((((beans.CalculatorBean)_jspx_page_context.findAttribute("calculator")).getYstatus())));
       out.write("\r\n-->\r\n\r\n");
-      out.write("\r\n\r\n<html>\r\n<head>\r\n<title>calculate result page</title>\r\n<link href=\"mycss.css\" rel=\"stylesheet\" type=\"text/css\">\r\n</head>\r\n<body>\r\n\tcalculate result page\r\n\t<br>\r\n\t<hr>\r\n\t<!--          \r\n\t\r\n\t\t");
-      out.write(org.apache.jasper.runtime.JspRuntimeLibrary.toString((((beans.CalculatorBean)_jspx_page_context.findAttribute("calculator")).getXvalue())));
-      out.write(" \r\n\t\t");
-      out.write(org.apache.jasper.runtime.JspRuntimeLibrary.toString((((beans.CalculatorBean)_jspx_page_context.findAttribute("calculator")).getYvalue())));
-      out.write("\r\n\t\t");
-      out.write(org.apache.jasper.runtime.JspRuntimeLibrary.toString((((beans.CalculatorBean)_jspx_page_context.findAttribute("calculator")).getSum())));
-      out.write("\r\n\t\t\r\n\r\n\t\t-->\r\n\t");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${calc[\"xvalue\"]}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-      out.write(' ');
-      out.write('+');
-      out.write(' ');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${calc[\"yvalue\"]}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-      out.write(' ');
-      out.write('=');
-      out.write(' ');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${calc[\"sum\"]}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-      out.write("\r\n\t<br>\r\n\t<hr>\r\n\t<a href=\"formdemo.jsp\"> terug </a>\r\n</body>\r\n</html>");
+      out.write("\r\n\r\n<html>\r\n   <head>\r\n      <title>calculate form page</title>\r\n      <link href=\"mycss.css\" rel=\"stylesheet\" type=\"text/css\"> \r\n   </head>\r\n   <body>\r\n         calculate form page\r\n         <hr>\r\n         <br>\r\n        <form method=\"get\" action=\"calculate\">\r\n            <table class = \"center\">\r\n               <tr>\r\n                  <td align=\"right\">\r\n                     x:\r\n                  </td>\r\n                  <td>\r\n\t\t\t\t \r\n\t\t\t\t  ");
+
+				  beans.CalculatorBean cb = (beans.CalculatorBean) request.getAttribute("calc");
+				  
+					if(cb != null)
+					{
+						if(cb.getXstatus() == 0){
+							
+      out.write("\r\n\t\t\t\t\t\t\t<input name=\"xvalue\"  style=\"background-color:#DC143C;\" value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t\t");
+
+						} else{
+							
+      out.write("\r\n\t\t\t\t\t\t\t<input name=\"xvalue\"  value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t\t");
+
+						}
+					}
+					else{
+						
+      out.write("\r\n\t\t\t\t\t\t<input name=\"xvalue\"  value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t");
+
+					}
+				  
+      out.write("\r\n                  </td>\r\n               </tr>\r\n               <tr>\r\n                  <td align=\"right\">\r\n                     y:\r\n                  </td>\r\n                  <td>\r\n\t\t\t\t  ");
+
+					if(cb != null)
+					{
+						if(cb.getYstatus() == 0){
+							
+      out.write("\r\n\t\t\t\t\t\t\t<input name=\"yvalue\"  style=\"background-color:#DC143C;\" value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t\t");
+
+						} else{
+							
+      out.write("\r\n\t\t\t\t\t\t\t<input name=\"yvalue\"  value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t\t");
+
+						}
+					}
+					else{
+						
+      out.write("\r\n\t\t\t\t\t\t<input name=\"yvalue\"  value=\"0\"  size=\"15\">\r\n\t\t\t\t\t\t");
+
+					}
+				  
+      out.write("\r\n                     \r\n                  </td>\r\n               </tr>\r\n               <tr>\r\n                  <td colspan = \"2\" align= \"right\">\r\n                      <input type=\"submit\" value=\" tel op \">\r\n                  </td>\r\n               </tr>   \r\n            </table>\r\n\t\t</form>\r\n   </body>\r\n</html>");
     } catch (java.lang.Throwable t) {
       if (!(t instanceof javax.servlet.jsp.SkipPageException)){
         out = _jspx_out;
