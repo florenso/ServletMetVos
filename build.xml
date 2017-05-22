@@ -51,6 +51,7 @@
  , ,@:::;;;;;;;``````                 .:@ ,,,,,,</echo>
   <subant target="all">
         <fileset dir="Week1/" includes="*/build.xml" />
+        <fileset dir="Week2/" includes="*/build.xml" />
 </subant>
 
 </target>
