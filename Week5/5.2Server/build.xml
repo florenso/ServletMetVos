@@ -1,21 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="wsgen" default="gen" basedir=".">
-	<property file="server.properties"/>
-	<target name="gen">
-		<mkdir dir="${resrc}"/>
-		<exec executable="wsgen">
-			<arg value="-verbose"/>
-			<arg value="-classpath"/>
-			<arg value="bin"/>
-			<arg value="-d"/>
-			<arg value="bin"/>
-			<arg value="-wsdl"/>
-			<arg value="-r"/>
-			<arg value="${resrc}"/>
-			<arg value="-s"/>
-			<arg value="src"/>
-			<arg value="${sei}" />
-		</exec>
-	</target>
-</project>
+<project name="W5Opdracht2Server" default="help" basedir=".">
+  <!-- Define the properties used by the build -->
+  <property name="app.name"      value="W5Opdracht2Server"/>
+  <property name="webapps.home"   value="C:\tomcat\webapps"/>
+  <property name="tomcat.home"   value="C:/tomcat/"/>
+  <property name="work.home"    value="${basedir}/work"/>
+  <property name="dist.home"     value="${basedir}/dist"/>
+  <property name="src.home"      value="${basedir}/src"/>
+  <property name="lib"      value="${basedir}/../../lib"/>
+  
+  <import file="C:/tomcat/bin/catalina-tasks.xml"/>
+	 
+  <target name="help">
+    <echo>You can use the following targets:</echo>
+    <echo> </echo>
+    <echo>  help    : (default) Prints this message </echo>
+    <echo>  all     : Cleans, compiles, and packages application</echo>
+    <echo>  clean   : Deletes work directories</echo>
+    <echo>  compile : Compiles servlets into class files</echo>
+    <echo>  dist    : Packages artifacts into a deployable WAR</echo>
+    <echo></echo>
+    <echo>For example, to clean, compile, and package all at once, run:</echo>
+    <echo>prompt> ant all </echo>
+  </target>
+  
+    <path id="runtime.path">
+        <pathelement location="${tomcat.home}/lib"/>
+        <fileset dir="${tomcat.home}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+	</path>
+	
 
+
+  <target name="all" depends="clean,compile"
+          description="Clean work dirs, then compile and create a WAR"/>
+
+  <target name="clean"
+          description="Delete old work and dist directories">
+    <delete dir="${work.home}"/>
+    <delete dir="${dist.home}"/>
+  </target>
+
+  <target name="prepare" depends="clean" description="Create working dirs and copy static files to work dir">
+    <mkdir  dir="${work.home}"/>
+  </target>
+
+  <target name="compile" depends="prepare"  description="Compile Java sources and copy to WEB-INF/classes dir">
+    <javac srcdir="${src.home}"
+          destdir="${work.home}">
+       <classpath refid="runtime.path"/>
+    </javac>
+
+  </target>
+
+
+
+
+</project> 

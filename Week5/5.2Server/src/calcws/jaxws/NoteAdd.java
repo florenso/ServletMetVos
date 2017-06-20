@@ -26,7 +26,7 @@ public class NoteAdd {
      * @return
      *     returns int
      */
-    public int getText() {
+    public String getText() {
         return this.text;
     }
 
