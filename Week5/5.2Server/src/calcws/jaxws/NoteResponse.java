@@ -7,10 +7,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "addResponse", namespace = "http://calcws/")
+@XmlRootElement(name = "noteResponse", namespace = "http://calcws/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "addResponse", namespace = "http://calcws/")
-public class AddResponse {
+@XmlType(name = "noteResponse", namespace = "http://calcws/")
+public class NoteResponse {
 
     @XmlElement(name = "return", namespace = "")
     private int _return;

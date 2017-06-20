@@ -7,26 +7,27 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "add", namespace = "http://calcws/")
+@XmlRootElement(name = "note", namespace = "http://")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "add", namespace = "http://calcws/", propOrder = {
-    "a",
-    "b"
+@XmlType(name = "note", namespace = "http://calcws/", propOrder = {
+    "text",
+	"id",
 })
-public class Add {
 
-    @XmlElement(name = "a", namespace = "")
-    private int a;
-    @XmlElement(name = "b", namespace = "")
-    private int b;
+public class NoteAdd {
+
+    @XmlElement(name = "text", namespace = "")
+    private String text;
+    @XmlElement(name = "id", namespace = "")
+    private int id;
 
     /**
      * 
      * @return
      *     returns int
      */
-    public int getA() {
-        return this.a;
+    public int getText() {
+        return this.text;
     }
 
     /**
@@ -34,8 +35,8 @@ public class Add {
      * @param a
      *     the value for the a property
      */
-    public void setA(int a) {
-        this.a = a;
+    public void setText(String t) {
+        this.text = t;
     }
 
     /**
@@ -43,8 +44,8 @@ public class Add {
      * @return
      *     returns int
      */
-    public int getB() {
-        return this.b;
+    public int getId() {
+        return this.id;
     }
 
     /**
@@ -52,8 +53,9 @@ public class Add {
      * @param b
      *     the value for the b property
      */
-    public void setB(int b) {
-        this.b = b;
+    public void setId(int i) {
+        this.id = i;
     }
 
 }
+
