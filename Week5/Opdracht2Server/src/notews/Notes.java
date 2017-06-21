@@ -35,10 +35,16 @@ public class Notes {
 				conn = DriverManager.getConnection(DB_URL);
 				stmt = conn.createStatement();
 				System.out.println("Executing Query: " + query);
-				stmt.executeUpdate(query);
+				int changedRows = stmt.executeUpdate(query);
+				System.out.println("Result of exeupdate: " + changedRows);
 				stmt.close();
 				conn.close();
-				return true;
+				if(changedRows == 0){
+					return false;	
+				}
+				else{
+					return true;
+				}
 			}
 			catch(SQLException se){
 				//Handle errors for JDBC
