@@ -1,5 +1,5 @@
 //Notes.java
-package calcws;
+package notews;
 
 import javax.jws.WebService;
 import javax.jws.WebParam;

@@ -2,7 +2,7 @@
 package server;
 
 import javax.xml.ws.Endpoint;
-import calcws.Notes;
+import notews.Notes;
 
 public class NoteServer {
     

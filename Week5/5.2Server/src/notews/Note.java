@@ -1,4 +1,4 @@
-package calcws;
+package notews;
 
 import java.util.Date;
 
