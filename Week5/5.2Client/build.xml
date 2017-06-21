@@ -1,18 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="wsimport" default="import" basedir=".">
-	<property file="client.properties" />
-	<property name="srcDir" location="src" />
-	<property name="binDir" location="bin" />
-	<target name="import">
-		<exec executable="wsimport">
-			<arg value="-verbose" />
-			<arg value="-keep" />
-			<arg value="-d" />
-			<arg value="${binDir}" />
-			<arg value="-s" />
-			<arg value="${srcDir}" />
-			<arg value="${wsdl_uri}" />
-		</exec>
-	</target>
-</project>
+<project name="W5Opdracht2Server" default="help" basedir=".">
+  <!-- Define the properties used by the build -->
+  <property name="app.name"      value="W5Opdracht2Server"/>
+  <property name="webapps.home"   value="C:\tomcat\webapps"/>
+  <property name="tomcat.home"   value="C:/tomcat/"/>
+  <property name="bin.home"    value="${basedir}/bin"/>
+  <property name="src.home"      value="${basedir}/src"/>
+  <property name="lib"      value="${basedir}/../../lib"/>
+  
+  <import file="C:/tomcat/bin/catalina-tasks.xml"/>
+	 
+  
+    <path id="runtime.path">
+        <pathelement location="${tomcat.home}/lib"/>
+        <fileset dir="${tomcat.home}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/bin">
+          <include name="*.jar"/>
+        </fileset>
+		<pathelement location="${bin.home}"/>
+	</path>
+	
 
+
+  <target name="all" depends="clean,compile"
+          description="Clean work dirs, then compile and create a WAR"/>
+
+  <target name="clean"
+          description="Delete old work and dist directories">
+    <delete dir="${bin.home}"/>
+    
+  </target>
+
+  <target name="prepare" depends="clean" description="Create working dirs and copy static files to work dir">
+    <mkdir  dir="${bin.home}"/>
+  </target>
+
+  <target name="compile" depends="prepare"  description="Compile Java sources and copy to WEB-INF/classes dir">
+    <javac srcdir="${src.home}"
+          destdir="${bin.home}">
+       <classpath refid="runtime.path"/>
+    </javac>
+
+  </target>
+
+    <target name="run" depends="compile">
+        <java fork="true" classname="client.NoteServiceClient" dir="${bin.home}">
+			<classpath refid="runtime.path"/>
+        </java>
+    </target>
+
+
+</project> 

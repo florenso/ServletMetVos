@@ -122,7 +122,7 @@ public class Notes {
 		String sql;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 		String date = sdf.format(new Date());
-		sql = "INSERT INTO Notes (noteText, noteTimeStamp) VALUES ('"+tekst+"', '"+date+");";
+		sql = "INSERT INTO Notes (noteText, noteTimeStamp) VALUES ('"+tekst+"', '"+date+"');";
 		boolean result = executeSqlQueryWithoutResult(sql);
 
 		System.out.println("request addNote(" + tekst + ")");
