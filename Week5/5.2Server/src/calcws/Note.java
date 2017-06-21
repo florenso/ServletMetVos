@@ -8,10 +8,10 @@ public class Note{
 	private int id;
 	private Date timeStamp;
 	
-	public Note(){
-		text = "";
-		id = 0;
-		timeStamp = new Date();
+	public Note(String te, int i, Date time){
+		text = te;
+		id = i;
+		timeStamp = time;
 	}
 	
 	public void setText(String tex){
