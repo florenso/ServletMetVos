@@ -45,7 +45,7 @@
   </target>
 
     <target name="run" depends="compile">
-        <java fork="true" classname="client.NoteServiceClient" dir="${bin.home}">
+        <java fork="true" classname="client.CalculatorClient" dir="${bin.home}">
 			<classpath refid="runtime.path"/>
         </java>
     </target>
