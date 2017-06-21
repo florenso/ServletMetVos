@@ -3,25 +3,12 @@
   <property name="app.name"      value="W5Opdracht2Server"/>
   <property name="webapps.home"   value="C:\tomcat\webapps"/>
   <property name="tomcat.home"   value="C:/tomcat/"/>
-  <property name="work.home"    value="${basedir}/work"/>
-  <property name="dist.home"     value="${basedir}/dist"/>
+  <property name="bin.home"    value="${basedir}/bin"/>
   <property name="src.home"      value="${basedir}/src"/>
   <property name="lib"      value="${basedir}/../../lib"/>
   
   <import file="C:/tomcat/bin/catalina-tasks.xml"/>
 	 
-  <target name="help">
-    <echo>You can use the following targets:</echo>
-    <echo> </echo>
-    <echo>  help    : (default) Prints this message </echo>
-    <echo>  all     : Cleans, compiles, and packages application</echo>
-    <echo>  clean   : Deletes work directories</echo>
-    <echo>  compile : Compiles servlets into class files</echo>
-    <echo>  dist    : Packages artifacts into a deployable WAR</echo>
-    <echo></echo>
-    <echo>For example, to clean, compile, and package all at once, run:</echo>
-    <echo>prompt> ant all </echo>
-  </target>
   
     <path id="runtime.path">
         <pathelement location="${tomcat.home}/lib"/>
@@ -40,23 +27,30 @@
 
   <target name="clean"
           description="Delete old work and dist directories">
-    <delete dir="${work.home}"/>
-    <delete dir="${dist.home}"/>
+    <delete dir="${bin.home}"/>
+    
   </target>
 
   <target name="prepare" depends="clean" description="Create working dirs and copy static files to work dir">
-    <mkdir  dir="${work.home}"/>
+    <mkdir  dir="${bin.home}"/>
   </target>
 
   <target name="compile" depends="prepare"  description="Compile Java sources and copy to WEB-INF/classes dir">
     <javac srcdir="${src.home}"
-          destdir="${work.home}">
+          destdir="${bin.home}">
        <classpath refid="runtime.path"/>
     </javac>
 
   </target>
 
-
+    <target name="run" depends="jar">
+        <java fork="true" classname="server.NoteServer">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
 
 
 </project> 

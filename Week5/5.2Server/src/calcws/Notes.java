@@ -10,17 +10,17 @@ import java.util.ArrayList;
 public class Notes {
     
 
-	boolean addNote(@WebParam(name="text") String tekst){
+	public boolean addNote(@WebParam(name="text") String tekst){
 		System.out.println("request addNote(" + tekst + ")");
 		return false;
 	}
 	
-	boolean removeNote(@WebParam(name="id") int  noteId){
+	public boolean removeNote(@WebParam(name="id") int  noteId){
 		System.out.println("request removeNote(" + noteId + ")");
 		return false;
 	}
 
-	List<Note> getNotes(){
+	public List<Note> getNotes(){
 
 	
 		
