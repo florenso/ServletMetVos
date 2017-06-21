@@ -45,8 +45,8 @@
   </target>
 
     <target name="run" depends="compile">
-        <java fork="true" classpath="${bin.home}" classname="server.NoteServer" dir="${bin.home}">
-			
+        <java fork="true" classname="server.NoteServer" dir="${bin.home}">
+			<classpath refid="runtime.path"/>
         </java>
     </target>
 
