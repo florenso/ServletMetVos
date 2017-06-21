@@ -17,5 +17,9 @@ class NoteServiceClient {
         System.out.println("Getting all notes from client");
 		List<Note> allResultsNotes = noteProxy.getNotes();
 		System.out.println("Result of getAllNotes: " + allResultsNotes.toString());
+		
+		for(Note ct : allResultsNotes){
+			System.out.println("We found a note: " + ct.getText() + " created at date: " + ct.getDate().toString());
+		}
 	}
 }
